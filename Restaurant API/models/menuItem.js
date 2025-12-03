@@ -14,7 +14,9 @@ class MenuItem {
     static async findByCategoryID(categoryID) {
         try {
             const pool = await getPool()
-            const result = await pool.request().input('categoryID' , sql.Int , categoryID).query('SELECT * FROM MenuItems WHERE categoryID = @categoryID')
+            const result = await pool.request()
+            .input('categoryID' , sql.Int , categoryID)
+            .query('SELECT * FROM MenuItems WHERE categoryID = @categoryID')
             return result.recordset
         } catch (error) {
             throw error

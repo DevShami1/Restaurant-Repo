@@ -2,6 +2,10 @@ const express = require('express')
 const categoryRoutes = require('./routes/categoryRoutes')
 const menuItemRoutes = require('./routes/menuItemRoutes')
 const userRoutes = require('./routes/userRoutes')
+const cartRoutes = require('./routes/cartRoutes')
+const cartItemRoutes = require('./routes/cartItemRoutes')
+const tableReservationRoutes = require('./routes/tableReservationRoutes')
+const orderRoutes = require('./routes/orderRoutes')
 const app = express()
 const port = 3000
 
@@ -10,6 +14,14 @@ app.use(express.json())
 app.use('/api/categories' , categoryRoutes)
 app.use('/api/menuItems' , menuItemRoutes)
 app.use('/api/users' , userRoutes)
+app.use('/api/carts' , cartRoutes)
+app.use('/api/cartItems' , cartItemRoutes)
+app.use('/api/tables' , tableReservationRoutes)
+app.use('/api/orders' , orderRoutes)
+
+app.get('/' , (req , res) => {
+    res.send('Welcome to my API')
+})
 
 app.get('/health', (req, res) => {
     res.json({
